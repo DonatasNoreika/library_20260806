@@ -1,4 +1,5 @@
 from django.db import models
+import uuid
 
 # Create your models here.
 class Genre(models.Model):
@@ -27,3 +28,20 @@ class Book(models.Model):
 
     def __str__(self):
         return self.title
+
+class BookInstance(models.Model):
+    uuid = models.UUIDField(default=uuid.uuid4)
+    book = models.ForeignKey(to="Book", on_delete=models.CASCADE)
+    due_back = models.DateField(null=True, blank=True)
+
+    LOAN_STATUS = (
+        ('d', 'Administered'),
+        ('t', 'Taken'),
+        ('a', 'Available'),
+        ('r', 'Reserved'),
+    )
+
+    status = models.CharField(choices=LOAN_STATUS, default='d')
+
+    def __str__(self):
+        return str(self.uuid)
