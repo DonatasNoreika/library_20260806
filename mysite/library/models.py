@@ -29,6 +29,10 @@ class Book(models.Model):
                                on_delete=models.SET_NULL,
                                null=True, blank=True)
 
+    def display_genre(self):
+        return ", ".join(genre.name for genre in self.genre.all())
+
+    # display_genre.short_description = "Žanrai"
 
     def __str__(self):
         return self.title

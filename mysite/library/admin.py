@@ -2,7 +2,7 @@ from django.contrib import admin
 from .models import Genre, Author, Book, BookInstance
 
 class BookAdmin(admin.ModelAdmin):
-    list_display = ['title', 'isbn', 'author']
+    list_display = ['title', 'isbn', 'display_genre', 'author']
 
 # Register your models here.
 admin.site.register(Genre)
