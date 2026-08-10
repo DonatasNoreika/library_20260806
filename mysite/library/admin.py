@@ -3,6 +3,11 @@ from .models import Genre, Author, Book, BookInstance
 
 class AuthorAdmin(admin.ModelAdmin):
     list_display = ['first_name', 'last_name', 'display_books']
+    readonly_fields = ['display_books']
+
+    fieldsets = [
+        ('General', {'fields': ('first_name', 'last_name', 'display_books')}),
+    ]
 
 class BookInstanceInLine(admin.TabularInline):
     model = BookInstance
