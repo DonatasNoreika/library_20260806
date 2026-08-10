@@ -8,6 +8,10 @@ class Genre(models.Model):
     def __str__(self):
         return self.name
 
+    # class Meta:
+    #     verbose_name = "Žanras"
+    #     verbose_name_plural = "Žanrai"
+
 
 class Author(models.Model):
     first_name = models.CharField()
