@@ -6,6 +6,7 @@ class BookAdmin(admin.ModelAdmin):
 
 class BookInstanceAdmin(admin.ModelAdmin):
     list_display = ['uuid', 'book', 'status', 'due_back']
+    list_filter = ['book', 'status', 'due_back']
 
 # Register your models here.
 admin.site.register(Genre)
