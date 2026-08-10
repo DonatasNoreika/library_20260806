@@ -17,6 +17,9 @@ class Author(models.Model):
     first_name = models.CharField()
     last_name = models.CharField()
 
+    def display_books(self):
+        return ", ".join(book.title for book in self.books.all())
+
     def __str__(self):
         return f"{self.first_name} {self.last_name}"
 
@@ -27,7 +30,8 @@ class Book(models.Model):
     genre = models.ManyToManyField(to="Genre")
     author = models.ForeignKey(to="Author",
                                on_delete=models.SET_NULL,
-                               null=True, blank=True)
+                               null=True, blank=True,
+                               related_name="books")
 
     def display_genre(self):
         return ", ".join(genre.name for genre in self.genre.all())
