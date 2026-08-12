@@ -6,7 +6,7 @@ class AuthorAdmin(admin.ModelAdmin):
     readonly_fields = ['display_books']
 
     fieldsets = [
-        ('General', {'fields': ('first_name', 'last_name', 'display_books')}),
+        ('General', {'fields': ('first_name', 'last_name', 'description', 'display_books')}),
     ]
 
 class BookInstanceInLine(admin.TabularInline):

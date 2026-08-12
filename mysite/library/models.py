@@ -16,6 +16,7 @@ class Genre(models.Model):
 class Author(models.Model):
     first_name = models.CharField()
     last_name = models.CharField()
+    description = models.TextField(default="")
 
     def display_books(self):
         return ", ".join(book.title for book in self.books.all())
