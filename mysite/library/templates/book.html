@@ -8,4 +8,16 @@
 <p><b>ISBN: </b>{{ book.isbn }}</p>
 <p><b>Žanras: </b>{{ book.display_genre }}</p>
 <p>{{ book.summary }}</p>
+<hr>
+<h3>Egzemplioriai:</h3>
+{% for instance in book.instances.all %}
+<p><b>UUID:</b> {{ instance.uuid }}</p>
+<p class="{% if instance.status == 't' %}text-danger{% elif instance.status == 'a' %}text-success{% elif instance.status == 'r' %}text-warning{% endif %}">
+    {{ instance.get_status_display }}
+</p>
+{% if instance.due_back %}
+<p><b>Grąžinimo data:</b> {{ instance.due_back }}</p>
+{% endif %}
+<hr>
+{% endfor %}
 {% endblock %}
