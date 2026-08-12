@@ -4,6 +4,8 @@
 
 {% block content %}
 {% for author in authors %}
-<p>{{ author.first_name }} <b>{{ author.last_name }}</b></p>
+<a href="{% url 'author' author.pk %}">
+    <p>{{ author.first_name }} <b>{{ author.last_name }}</b></p>
+</a>
 {% endfor %}
 {% endblock %}
