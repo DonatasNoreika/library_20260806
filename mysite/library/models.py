@@ -33,6 +33,7 @@ class Book(models.Model):
                                on_delete=models.SET_NULL,
                                null=True, blank=True,
                                related_name="books")
+    cover = models.ImageField(upload_to='covers', null=True, blank=True)
 
     def display_genre(self):
         return ", ".join(genre.name for genre in self.genre.all())
