@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}Prisijungimas{% endblock %}
+
+{% block content %}
+
+<form method="post">
+    {% csrf_token %}
+    {% load crispy_forms_tags %}
+    {{ form | crispy }}
+    <button class="btn btn-primary" type="submit">Prisijungti</button>
+</form>
+
+{% endblock %}
