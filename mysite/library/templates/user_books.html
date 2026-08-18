@@ -9,7 +9,11 @@
 <p>{{ instance.book.author }}</p>
 <p>UUID: {{ instance.uuid }}</p>
 <p>Būsena: {{ instance.get_status_display }}</p>
-<p>Reikia grąžinti iki: {{ instance.due_back }}</p>
+<p>Reikia grąžinti iki:
+    <span class="{% if instance.is_overdue %}text-danger{% endif %}">
+        {{ instance.due_back }}
+    </span>
+</p>
 <hr>
 {% endfor %}
 {% endblock %}
