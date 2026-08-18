@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}Mano paimtos knygos{% endblock %}
+
+{% block content %}
+<h1>Mano paimtos knygos:</h1>
+{% for instance in instances %}
+<p><b>{{ instance.book.title }}</b></p>
+<p>{{ instance.book.author }}</p>
+<p>UUID: {{ instance.uuid }}</p>
+<p>Būsena: {{ instance.get_status_display }}</p>
+<p>Reikia grąžinti iki: {{ instance.due_back }}</p>
+<hr>
+{% endfor %}
+{% endblock %}
