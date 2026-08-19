@@ -33,9 +33,14 @@ class BookInstanceAdmin(admin.ModelAdmin):
         ('Availability', {'fields': ('status', 'reader', 'due_back')}),
     ]
 
+class BookReviewAdmin(admin.ModelAdmin):
+    list_display = ['book', 'author', 'date', 'content']
+
+
+
 # Register your models here.
 admin.site.register(Genre)
 admin.site.register(Author, AuthorAdmin)
 admin.site.register(Book, BookAdmin)
 admin.site.register(BookInstance, BookInstanceAdmin)
-admin.site.register(BookReview)
+admin.site.register(BookReview, BookReviewAdmin)
