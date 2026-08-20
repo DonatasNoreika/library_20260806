@@ -1,5 +1,6 @@
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.contrib.auth.models import User
+# from django.contrib.auth.models import User
 from django.shortcuts import render, reverse, redirect
 from django.urls import reverse_lazy
 from django.views.generic.edit import FormMixin
@@ -114,7 +115,7 @@ class SignUpView(generic.CreateView):
 #     def get_object(self, queryset = ...):
 #         return self.request.user
 
-
+@login_required
 def profile(request):
     u_form = UserUpdateForm(request.POST or None, instance=request.user)
     p_form = ProfileUpdateForm(request.POST or None, request.FILES, instance=request.user.profile)
