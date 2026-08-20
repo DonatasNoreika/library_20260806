@@ -23,7 +23,11 @@
 </form>
 {% endif %}
 {% for review in book.reviews.all %}
-<p><b>{{ review.author }}</b>, <i>{{ review.date }}</i><br>
+<p>
+    {% if review.author.profile.photo %}
+        <img src="{{ review.author.profile.photo.url }}" class="rounded-circle" style="width: 30px">
+    {% endif %}
+    <b>{{ review.author }}</b>, <i>{{ review.date }}</i><br>
     {{ review.content }}
 </p>
 {% endfor %}
@@ -36,6 +40,15 @@
 </p>
 {% if instance.due_back %}
 <p><b>Grąžinimo data:</b> {{ instance.due_back }}</p>
+{% endif %}
+{% if instance.reader %}
+<p>
+    <b>Skaitytojas: </b>
+    {% if instance.reader.profile.photo %}
+        <img src="{{ instance.reader.profile.photo.url }}" class="rounded-circle" style="width: 30px">
+    {% endif %}
+    {{ instance.reader.username }}
+</p>
 {% endif %}
 <hr>
 {% endfor %}
