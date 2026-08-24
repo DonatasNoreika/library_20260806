@@ -11,7 +11,8 @@ from django.db.models import Q
 from django.contrib.auth.forms import UserCreationForm
 from .forms import (BookReviewForm,
                     UserUpdateForm,
-                    ProfileUpdateForm)
+                    ProfileUpdateForm,
+                    BookInstanceForm)
 
 # Create your views here.
 def index(request):
@@ -152,7 +153,8 @@ class BookInstanceDetailView(LoginRequiredMixin, UserPassesTestMixin, generic.De
 
 class BookInstanceCreateView(LoginRequiredMixin, UserPassesTestMixin, generic.CreateView):
     model = BookInstance
-    fields = ['book', 'reader', 'due_back', 'status']
+    # fields = ['book', 'reader', 'due_back', 'status']
+    form_class = BookInstanceForm
     template_name = "book_form.html"
     success_url = reverse_lazy("instances")
 
