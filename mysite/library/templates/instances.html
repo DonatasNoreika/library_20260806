@@ -5,7 +5,9 @@
 {% block content %}
 <h1>Knygų egzempliorių administravimas</h1>
 {% for instance in instances %}
-<p><b>{{ instance.book }}</b> - {{ instance.uuid }}<br>
+<p><a href="{% url 'instance' instance.pk %}">
+    <b>{{ instance.book }}</b> - {{ instance.uuid }}<br>
+    </a>
     <span class="{% if instance.is_overdue %}text-danger{% endif %}">
     Būsena: {{ instance.get_status_display }}
     Skaitytojas: {{ instance.reader }},
