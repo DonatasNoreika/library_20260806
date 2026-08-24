@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}Administravimas{% endblock %}
+
+{% block content %}
+<h1>Knygų egzempliorių administravimas</h1>
+{% for instance in instances %}
+<p><b>{{ instance.book }}</b> - {{ instance.uuid }}<br>
+    <span class="{% if instance.is_overdue %}text-danger{% endif %}">
+    Būsena: {{ instance.get_status_display }}
+    Skaitytojas: {{ instance.reader }},
+    Grąžinimo data: {{ instance.due_back }}
+    </span>
+</p>
+{% endfor %}
+{% endblock %}
