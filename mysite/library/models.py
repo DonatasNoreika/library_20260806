@@ -91,6 +91,9 @@ class BookInstance(models.Model):
     def __str__(self):
         return str(self.uuid)
 
+    class Meta:
+        ordering = ['-pk']
+
 
 class BookReview(models.Model):
     book = models.ForeignKey(to="Book",
