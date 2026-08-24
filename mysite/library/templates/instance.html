@@ -19,4 +19,7 @@
         {{ instance.due_back }}
     </span>
 </p>
+<div>
+    <a class="btn btn-warning" href="{% url 'instance_update' instance.pk %}">Redaguoti</a>
+</div>
 {% endblock %}
