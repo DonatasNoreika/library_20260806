@@ -1,12 +1,12 @@
 {% extends 'base.html' %}
-
-{% block title %}PRADŽIA{% endblock %}
+{% load i18n %}
+{% block title %}{% trans 'HOME' %}{% endblock %}
 
 {% block content %}
-<h1>Mūsų bibliotekos statistika:</h1>
-<p><b>Knygų: </b>{{ num_books }}</p>
-<p><b>Egzempliorių: </b>{{ num_instances }}</p>
-<p><b>Laisvų egzempliorių: </b>{{ num_instances_available }}</p>
-<p><b>Autorių: </b>{{ num_authors }}</p>
-<p><b>Apsilankymų skaičius: </b>{{ num_visits }}</p>
+<h1>{% trans 'Library Statistics:' %}</h1>
+<p><b>{% trans 'Books:' %} </b>{{ num_books }}</p>
+<p><b>{% trans 'Book Instances:' %} </b>{{ num_instances }}</p>
+<p><b>{% trans 'Book Instances Available' %} </b>{{ num_instances_available }}</p>
+<p><b>{% trans 'Authors' %} </b>{{ num_authors }}</p>
+<p><b>{% trans 'Your visits:' %} </b>{{ num_visits }}</p>
 {% endblock %}
